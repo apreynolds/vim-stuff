@@ -1,0 +1,10 @@
+autoload/
+backup/
+doc/
+plugged/
+sessions/
+swap/
+Ultisnips/
+undo/
+vim-resources/
+viminfo
