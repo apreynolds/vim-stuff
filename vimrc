@@ -156,6 +156,7 @@ Plug 'AndrewRadev/bufferize.vim'
 Plug 'kshenoy/vim-signature' "for marks
 "Plug 'dominickng/fzf-session.vim', {'on': []}
 Plug 'Tarmean/fzf-session.vim'
+Plug 'yukimura1227/vim-yazi'
 call plug#end()
 "}}}
 "-----------------------------------------
@@ -492,6 +493,12 @@ function! SessUnloadWipeoutLoad()
   "Fuzzy load a new session:
   execute 'SessionLoad'
 endfunction
+"}}}
+"-----------------------------------------
+"{{{ plugin: yazi-vim
+"
+let g:yazi_replace_netrw = 1
+nnoremap <leader>y :tabnew \| Yazi<cr>
 "}}}
 "-----------------------------------------
 "{{{ Diff (and mappings)
@@ -918,10 +925,10 @@ nnoremap <leader>cP :let @+ = expand("%:p")<CR>
 
 "VIMRC:
 nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :$tabe $HOME/tech/dotfiles/vim/vimrc<cr>
+nnoremap <leader>ev :$tabe $HOME/Documents/3tech/vim/vimrc<cr>
 
 "YAZI:
-nnoremap <leader>ey :$tabe $HOME/tech/dotfiles/yazi-keymap.toml<cr> 
+nnoremap <leader>ey :$tabe $HOME/Documents/3tech/yazi/keymap.toml<cr> 
 
 "OLDER EXPERIMENTS:
 "nnoremap <leader>bc :BeginCenter <CR>
