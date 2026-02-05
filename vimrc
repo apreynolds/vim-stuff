@@ -42,8 +42,11 @@ set hidden                       " Possibility to have more than one unsaved buf
 set splitright splitbelow        " Open splits below, and to the right
 set backspace=indent,eol,start " Intuitive backspace behavior.
 
+" Since moving .vim/ into the cloud-synced Documents/, I don't want swap files
+" to be cloud-synced, so place them in the non-synced ~/.cache/ directory:
+set directory=~/.cache/vim-swap//
+
 set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
 " Saving options in session and view files causes more problems than it solves, so disable it.
