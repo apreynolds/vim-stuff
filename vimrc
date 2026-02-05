@@ -892,6 +892,11 @@ endfunction
 
 "{{{ OPENING MISC FILES (based on :h gf)
 
+" I believe that I set up some of what follows when I was committed to the 'no
+" autochdir' approach. I've gone through a few iterations of how to organize
+" files, and I've landed back at autochdir. So I'm going to delete some of the
+" below.
+
 "OPEN FILE IN SAME DIRECTORY AS CURRENT BUFFER:
 nnoremap <leader><leader>e :e %:h
 nnoremap <leader><leader>s :sp %:h
