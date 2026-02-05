@@ -49,7 +49,6 @@ set undodir=~/.vim/undo//
 " Saving options in session and view files causes more problems than it solves, so disable it.
 set sessionoptions-=options
 set viewoptions-=options
-
 set sessionoptions+=globals " Ensure sessions save tabnames (necessary for Taboo plugin)
 
 "}}}
