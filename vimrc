@@ -216,7 +216,7 @@ let g:dispatch_no_maps = 1
 
 "}}}
 
-"{{{ plugin: Foldsearch, todo.txt
+"{{{ plugin: todo.txt, Foldsearch, todo.txt
 
 " DISABLE MAPPINGS: (I only use one)
 let g:foldsearch_disable_mappings = 1
@@ -929,23 +929,6 @@ nnoremap <leader>ey :$tabe $HOME/Documents/3tech/yazi/keymap.toml<cr>
 "command! CloseCenter :wincmd h | bd | wincmd l | bd
 
 "nnoremap <leader>es :vsplit ~/style_www/style.css<CR>
-"
-"OPENS TODO FILES IN NEW TAB:
-nnoremap <leader>tt :call MyTodo()<cr>
-command! Td :windo bd
-
-function! MyTodo()
-  execute '$tabe ~/Documents/todo/teaching.todo.txt'
-  execute 'lcd %:p:h'
-  execute 'vs ~/Documents/todo/work.todo.txt'
-  execute 'vs ~/Documents/todo/computer.todo.txt'
-  execute 'wincmd J'
-  execute 'vs ~/Documents/todo/todo.txt'
-  execute 'resize -10'
-  execute 'wincmd k'
-  execute 'wincmd h'
-  execute 'TabooRename todo'
-endfunction
 
 "}}} end Opening misc files
 
