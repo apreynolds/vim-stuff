@@ -929,14 +929,6 @@ nnoremap <leader>ev :$tabe $HOME/Documents/3tech/vim/vimrc<cr>
 "YAZI:
 nnoremap <leader>ey :$tabe $HOME/Documents/3tech/yazi/keymap.toml<cr> 
 
-"OLDER EXPERIMENTS:
-"nnoremap <leader>bc :BeginCenter <CR>
-"command! BeginCenter :vnew  | wincmd h | leftabove vnew | wincmd l
-"nnoremap <leader>x :CloseCenter <CR>
-"command! CloseCenter :wincmd h | bd | wincmd l | bd
-
-"nnoremap <leader>es :vsplit ~/style_www/style.css<CR>
-
 "}}} end Opening misc files
 
 "{{{ My "append to filename" function
