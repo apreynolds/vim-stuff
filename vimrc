@@ -1037,28 +1037,8 @@ nnoremap <leader>nc :NERDTreeCWD<CR>
 "{{{ functions: add quick notes
 
 "2025-06-11 These functions allow me to write a line of text and append it to
-"a particular file of my choosing. Very useful for adding to todo lists, work
-"wiki, teaching wiki, computer wiki, without having to navigate away from my
-"current buffer. 
+"a particular file of my choosing. 
 "(Remember to delete line afterwards, as it's not relevant to current file!)
-
-nnoremap <leader>atw :call AddToTodoWork()<CR>
-function! AddToTodoWork()
-  let l:line = getline('.')
-  call writefile([strftime("%F") . ': ' . l:line], $HOME . "/Documents/todo/work.todo.txt", "a")
-endfunction
-
-nnoremap <leader>atc :call AddToTodoComputer()<CR>
-function! AddToTodoComputer()
-  let l:line = getline('.')
-  call writefile([strftime("%F") . ': ' . l:line], $HOME . "/Documents/todo/computer.todo.txt", "a")
-endfunction
-
-nnoremap <leader>atd :call AddToTodo()<CR>
-function! AddToTodo()
-  let l:line = getline('.')
-  call writefile([strftime("%F") . ': ' . l:line], $HOME . "/Documents/todo/todo.txt", "a")
-endfunction
 
 "2025-07-17 Found the following function at https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
 function! Get_visual_selection()
