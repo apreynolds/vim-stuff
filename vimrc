@@ -917,7 +917,7 @@ nnoremap <leader>cP :let @+ = expand("%:p")<CR>
 
 "}}} end Opening misc files
 
-"{{{ My "append to filename" function
+"{{{ My "append to filename" function (obsolete?)
 
 "FUNCTION: Takes argument, appends it to end of filename.
 "(Renames file, deletes old one, appropriately sets filetype.)
@@ -953,7 +953,7 @@ endfunction
 "For tex files, check if pdf file exists, and if so, copy that pdf file to a timestamped backup pdf as well.
 "Does not open the backed up file.
 
-nnoremap <leader>ts call BackupWithTimestamp()
+nnoremap <leader>ts :call BackupWithTimestamp()<cr>
 
 function! BackupWithTimestamp()
   let l:filename = bufname()
