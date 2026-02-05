@@ -221,7 +221,6 @@ nnoremap <leader>fw :Fw<cr>
 
 augroup TODO
   autocmd!
-  autocmd BufEnter *todo.txt e
   autocmd BufEnter *todo.txt setlocal foldmethod=manual
   autocmd FileType todo nnoremap <leader><leader>1 :Fp @\(household\)\@!<cr>
   autocmd FileType todo nnoremap <leader><leader>p :Fp (\w)<cr>
