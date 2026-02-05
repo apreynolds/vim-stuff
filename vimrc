@@ -1,5 +1,4 @@
-" TODO cleanup any references to todo.txt, as I don't use it anymore
-"-----------------------------------------
+
 "{{{ SEE ALSO:
 
 " (RECALL that <leader>gf will open these files in new tab)
@@ -18,7 +17,9 @@
 " ~/.vim/after/syntax/todo.vim
 
 "}}} 
-"-----------------------------------------
+
+"{{{ INITIAL SETUP:
+
 " Enabling filetype support provides filetype-specific indenting,
 " syntax highlighting, omni-completion and other useful settings.
 filetype plugin indent on
@@ -27,19 +28,24 @@ syntax on
 " `matchit.vim` is built-in so let's enable it!
 " Hit `%` on `if` to jump to `else`.
 runtime macros/matchit.vim
+
 " :Man command will open man file for command in vimc
 runtime ftplugin/man.vim
 
 set viminfofile=~/.vim/viminfo
 
-"-----------------------------------------
+"}}} 
+
 "{{{ BASIC functionality:
 
-set autochdir
+set autochdir " Change working directory to that of the opened file
 
-set nomodeline                   " (I read a thread that suggested modelines could be a security risk; follow up on this later)
-set hidden                       " Possibility to have more than one unsaved buffers.
-set splitright splitbelow        " Open splits below, and to the right
+" I read a thread that suggested modelines could be a security risk; follow up
+" on this later
+set nomodeline  
+
+set hidden  " Possibility to have more than one unsaved buffer
+set splitright splitbelow  " Open splits below, and to the right
 set backspace=indent,eol,start " Intuitive backspace behavior.
 
 " Since moving .vim/ into the cloud-synced Documents/, I don't want swap files
@@ -49,33 +55,38 @@ set directory=~/.cache/vim-swap//
 set backupdir=~/.vim/backup//
 set undodir=~/.vim/undo//
 
-" Saving options in session and view files causes more problems than it solves, so disable it.
+" Saving options in session and view files causes more problems than it
+" solves, so disable it.
 set sessionoptions-=options
 set viewoptions-=options
-set sessionoptions+=globals " Ensure sessions save tabnames (necessary for Taboo plugin)
+
+" Ensure sessions save tabnames (necessary for Taboo plugin)
+set sessionoptions+=globals 
 
 "}}}
-"-----------------------------------------
+
 "{{{ BASIC look and feel:
-set autoindent                 " Minimal automatic indenting for any filetype.
-set wildmenu                   " Great command-line completion, use `<Tab>` to move around and `<CR>` to validate.
+
+set autoindent  " Minimal automatic indenting for any filetype.
+
+" Command-line completion, use `<Tab>` to move around and `<CR>` to validate.
+set wildmenu  
 set wildmode=longest,list,full " Command line tab completion
 
 set number relativenumber " Lines numbered relative to cursor
-set tabstop=4             " 4 spaces (default is 8)
-set expandtab             " Replace tabstops with spaces
-set shiftwidth=2          " Sets indentation to 2 spaces (default is 8)
+set tabstop=4  " 4 spaces (default is 8)
+set expandtab  " Replace tabstops with spaces
+set shiftwidth=2 " Sets indentation to 2 spaces (default is 8)
 set tw=80 " text width set to 80 characters
 set linebreak breakindent " Breaks lines at whitespace, and indent
-set showbreak=..          " Indentation of a linebreak is indicate with ..
-set ruler                 " Shows the current line number at the bottom-right of the screen.
-set showmatch             " Briefly show matching bracket
-
-set conceallevel=2   " Hides bold markers, $ in math mode, etc.
-set laststatus=2     " Necessary for statusline
-set showcmd          " Show (partial) command in last line
-set scrolloff=2      " Keep 2 lines visible at top/bottom when scrolling
-set noshowmode       " Showmode is unnecessary when using airline
+set showbreak=.. " Indentation of a linebreak is indicate with ..
+set ruler " Shows the current line number at the bottom-right of the screen.
+set showmatch " Briefly show matching bracket
+set conceallevel=2 " Hides bold markers, $ in math mode, etc.
+set laststatus=2 " Necessary for statusline
+set showcmd " Show (partial) command in last line
+set scrolloff=2 " Keep 2 lines visible at top/bottom when scrolling
+set noshowmode " Showmode is unnecessary when using airline
 set formatoptions+=j " Delete comment character when joining commented lines.
 
 
@@ -83,43 +94,57 @@ set formatoptions+=j " Delete comment character when joining commented lines.
 nnoremap <C-W>m <C-W>\|<C-W>_ 
 
 "}}}
-"-----------------------------------------
+
 "{{{ BASIC searching
+
 set incsearch  " Incremental search, hit `<CR>` to stop.
 set ignorecase " Ignore case when searching
 set smartcase  " Case-sensitive searching when uppercase letters are present
 set hlsearch   " for vim-cool
-"set shortmess-=S " instead of indexed-search plugin
+
 "}}}
-"-----------------------------------------
+
 "{{{ Leader
+
 let mapleader = ","
+
 " local leader is used for e.g. filetype plugins:
 let maplocalleader = "," "same
+
 "}}}
-"-----------------------------------------
+
 "{{{ AUGROUP
+
 augroup GENERAL
   autocmd!
   autocmd BufNewFile,BufRead *.txt setlocal tw=80
   autocmd BufNewFile,BufRead *.cls setlocal filetype=tex
-  " 2024-10-07 Started using ".song" filetype for music songsheets, as it's better for custom snippets and compilation commands. Note that ft=song.tex set filetype to both song and tex, and syntax to tex
+
+  " 2024-10-07 Started using .song filetype for music songsheets, as it's
+  " better for custom snippets and compilation commands. Note that ft=song.tex
+  " sets filetype to both song and tex, and syntax to tex
   autocmd BufNewFile,BufRead *.song setlocal filetype=song.tex
+
   autocmd BufEnter,BufRead tex.snippets setlocal foldmethod=marker foldmarker=<<<,>>> 
-  "autocmd BufEnter tex.snippets setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *rc setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *.toml setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *ign-except-text setlocal filetype=gitignore
   autocmd BufNewFile,BufRead *dircolors setlocal foldmethod=marker
-  "The following will reload a buffer on BufEnter (useful for my AddTo... functions):
+
+  "The following will reload a buffer on BufEnter (useful for my AddTo...
+  "functions):
   autocmd BufEnter *todo.txt e
   autocmd BufEnter *todo.txt setlocal foldmethod=manual
 augroup end
+
 "}}} end AUGROUP
-" -----------------------------------------
+
 "{{{ Vim-plug
+
 call plug#begin()
-"To disable a plugin, append , {'on': []}, e.g.  Plug 'vimwiki/vimwiki', {'on': []}
+
+"To disable a plugin append ', {'on': []}'
+
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdcommenter'
 Plug 'lervag/vimtex'
@@ -129,7 +154,11 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-obsession' 
 Plug 'tpope/vim-dispatch' "keymaps disabled
 Plug 'vimwiki/vimwiki'
-Plug 'freitass/todo.txt-vim', { 'frozen': 1 } "Plugin was last updated in 2016, and I've made local changes to it, so don't update it.
+
+"Plugin was last updated in 2016, and I've made local changes to it, so don't
+"update it.
+Plug 'freitass/todo.txt-vim', { 'frozen': 1 } 
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'embear/vim-foldsearch'
@@ -139,13 +168,21 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'artnez/vim-wipeout'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'TaDaa/vimade', {'on': []} "2025-05-18 encountered error when sourcing vimrc, so have disabled (unimportant plugin)
+
+"2025-05-18 encountered error when sourcing vimrc, so have disabled
+"(unimportant plugin)
+Plug 'TaDaa/vimade', {'on': []} 
+
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-eunuch'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'justinmk/vim-sneak'
-Plug 'voldikss/vim-floaterm', {'on': []} "2025-06-10 I no longer need this, as FZF and Rg (and tmux) achieve the same goals
+
+"2025-06-10 I no longer need this, as FZF and Rg (and tmux) achieve the same
+"goals
+Plug 'voldikss/vim-floaterm', {'on': []} 
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'romainl/vim-cool'
@@ -156,29 +193,34 @@ Plug 'kshenoy/vim-signature' "for marks
 Plug 'Tarmean/fzf-session.vim' "replaces dominickng/fzf-session.vim
 Plug 'yukimura1227/vim-yazi'
 call plug#end()
+
 "}}}
-"-----------------------------------------
+
 "{{{ Colors
+
 "https://github.com/morhetz/gruvbox/wiki/Configuration
+
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 colorscheme gruvbox
 set background=dark "had to add this which I switched to kitty terminal
+
 "SET COLOR OF DIRECTORIES TO MATCH MY DIRCOLORS:
 hi! link Directory GruvboxBlue
 
-"highlight NonText ctermfg=bg
-"highlight VertSplit ctermfg=bg
-"highlight Folded ctermbg=236
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Dispatch
+
 let g:dispatch_no_maps = 1
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Foldsearch, todo.txt
-"DISABLE MAPPINGS: (I only use one)
+
+" DISABLE MAPPINGS: (I only use one)
 let g:foldsearch_disable_mappings = 1
+
 "ENABLE FW:
 nnoremap <leader>fw :Fw<cr>
 
@@ -193,12 +235,12 @@ augroup TODO
   autocmd FileType todo noremap <leader><leader>b :Fp (A)\\|(B)<cr>
   autocmd FileType todo noremap <leader><leader>c :Fp (A)\\|(B)\\|(C)<cr>
 augroup end
-" -----------------------------------------
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Fugitive
+
 " Keymaps for fugitive commands: 
-" Git commit (including message; if I want a description just delete the -m "):
 nnoremap <leader>gc :Git commit -m "
 nnoremap <leader>gC :Git commit<cr>
 nnoremap <leader>gb :Git branch 
@@ -206,17 +248,19 @@ nnoremap <leader>gk :Git checkout
 nnoremap <leader>gt :Git tag 
 nnoremap <leader>gm :Git merge  
 nnoremap <leader>gr :Git rebase  
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: EasyAlign
-"TODO learn how to use this
+
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Goyo
 inoremap <leader>gg :Goyo<cr>
 nnoremap <leader>gg :Goyo<cr>
@@ -242,9 +286,11 @@ augroup GOYO
   autocmd User GoyoEnter nested call <SID>goyo_enter()
   autocmd User GoyoLeave nested call <SID>goyo_leave()
 augroup end
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: FZF, Rg
+
 let g:fzf_action = {
       \ 'ctrl-t': '$tab split',
       \ 'ctrl-x': 'split',
@@ -315,8 +361,9 @@ command! -bang -nargs=* RgWorkDiary call fzf#vim#grep("rg --column --line-number
 command! -bang -nargs=* RgComputerDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/3computer/diary'}), <bang>0)
 
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Airline
+
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -335,9 +382,11 @@ let g:airline_theme='gruvbox'
 "let g:airline_theme='bubblegum'
 "let g:airline_theme='raven'
 let g:airline#extensions#tmuxline#enabled = 1
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Taboo
+
 let g:taboo_tabline=1 "for taboo to work with airline
 let g:taboo_tab_format="%N%U %f%m" " Naming format for tabs
 let g:taboo_renamed_tab_format="%N%U %l%m" " Naming format for renamed tabs
@@ -348,26 +397,10 @@ nnoremap <leader>tr :TabooRename
 "the $ will place the tab last:
 nnoremap <leader>tn :$tabnew<CR>
 nnoremap <leader>tm :tabm
+
 "}}}
-"-----------------------------------------
-"{{{ plugin: Tmuxline
-let g:tmuxline_separators = {
-      \ 'left' : "",
-      \ 'right' : "",
-      \ 'space' : ' '}
-let g:tmuxline_preset = {
-      \'a'    : '',
-      \'b'    : '%a %d %b',
-      \'c'    : '%R',
-      \'win'  : ['#I', '#W'],
-      \'cwin'  : ['#I', '#W'],
-      \'x'    : '#(battery)',
-      \'y'    : '#S' ,
-      \'z'    : '' }
-"}}}
-"-----------------------------------------
+
 "{{{ PLUGIN: vimtex, and other tex stuff
-"-----------------------------------------
 
 let g:tex_flavor='latex' "new tex files will have ft set to tex
 
@@ -443,28 +476,35 @@ let g:vimtex_indent_delims = {
       \ 'close_indented' : 0,
       \ 'include_modified_math' : 0,
       \}
-"-----------------------------------------
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Ultisnips
+
 let g:UltiSnipsEditSplit='context'
 "let g:UltiSnipsListSnippets='<C-u>'
 let g:UltiSnipsExpandTrigger='<s-tab>'
 
 map <F3> :UltiSnipsEdit<CR>
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Wipeout
+
 " Closes all buffers not in windows
 nnoremap <leader>wo :Wipeout<CR>
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: Obsession and fzf-session 
 
-"NOTE: Using 'Tarmean/fzf-session.vim', after previously trying 'dominickng/fzf-session.vim'; the former is a little newer.
-"I mistakenly thought that the latter would obviate the need for Obsession, but I was wrong: Obsession provides the crucial "auto-save sessions" functionality.
-"While it may be possible to get the latter working the way I want with Obsession, I won't bother trying as the function below allows the behaviour I want, namely:
-"- Unload the current session and wipeout all the hidden buffers
+"NOTE: Using 'Tarmean/fzf-session.vim', after previously trying
+"'dominickng/fzf-session.vim'; the former is a little newer.  I mistakenly
+"thought that the latter would obviate the need for Obsession, but I was
+"wrong: Obsession provides the crucial "auto-save sessions" functionality.
+"While it may be possible to get the latter working the way I want with
+"Obsession, I won't bother trying as the function below allows the behaviour I
+"want, namely: - Unload the current session and wipeout all the hidden buffers
 "- Load a new session (fuzzy)
 
 map <leader>oo :Obsession ~/.vim/sessions/
@@ -494,8 +534,9 @@ function! SessUnloadWipeoutLoad()
   "Fuzzy load a new session:
   execute 'SessionLoad'
 endfunction
+
 "}}}
-"-----------------------------------------
+
 "{{{ plugin: yazi-vim
 
 " Replace netrw with yazi
@@ -508,9 +549,8 @@ let g:yazi_no_mappings = 1
 nnoremap <leader>y :tabnew \| Yazi<cr>
 
 "}}}
-"-----------------------------------------
+
 "{{{ Diff (and mappings)
-"-----------------------------------------
 
 "diff options 2015-07-18
 "Note that 'dp' puts, and 'do' obtains
@@ -521,33 +561,35 @@ endif
 
 nnoremap <leader>dt :diffthis<CR>
 nnoremap <leader>do :diffoff<CR>
-"-----------------------------------------
+
 "}}} end DIFF
-"-----------------------------------------
+
 "{{{ Mappings: Inserting date/time
+
 "Enter current date (see help i^R and search =):
 inoremap <F2> <C-R>=strftime("%F")<CR>
 "First enter insert mode, then date, then esc back to normal:
 nnoremap <F2> i<C-R>=strftime("%F")<CR><ESC>
-"}}} end Inserting date/time
-"-----------------------------------------
-"{{{ MISC: launching external scripts
-"-----------------------------------------
-nnoremap <leader>sy :Start! sync2onedrive<cr>
-"-----------------------------------------
-"}}} end MISC
-"-----------------------------------------
-"{{{ plugin: vim-markdown
-"-----------------------------------------
-let g:vim_markdown_new_list_item_indent = 2
-"}}} end vim-markdown
-"-----------------------------------------
-"{{{ plugin: Vimwiki
-"-----------------------------------------
 
-"-----------------------------------------
+"}}} end Inserting date/time
+
+"{{{ MISC: launching external scripts
+
+nnoremap <leader>sy :Start! sync2onedrive<cr>
+
+"}}} end MISC
+
+"{{{ plugin: vim-markdown
+
+let g:vim_markdown_new_list_item_indent = 2
+
+"}}} end vim-markdown
+
+"{{{ plugin: Vimwiki
+
+
 "{{{ GENERAL
-"-----------------------------------------
+
 let g:vimwiki_folding='expr' "2019-07-17 'list' is another option; see documentation
 let g:vimwiki_hl_headers=1
 let g:vimwiki_hl_cb_checked=1
@@ -584,11 +626,10 @@ nnoremap <localleader>vj :VimwikiDiaryPrevDay<CR>
 inoremap <leader><leader>c <Plug>VimwikiTableNextCell
 inoremap <leader><leader>p <Plug>VimwikiTableNextCell
 
-"-----------------------------------------
 "}}} end GENERAL
-"-----------------------------------------
+
 "{{{ My InitializeWikis function (obsolete?)
-"-----------------------------------------
+
 nnoremap <localleader>iw :call InitializeWikis()<CR>
 
 function! InitializeWikis()
@@ -604,11 +645,10 @@ function! InitializeWikis()
   execute 'tabfirst'
 endfunction
 
-"-----------------------------------------
 "}}} end InitializeWikis
-"-----------------------------------------
+
 "{{{ VimwikiLinkHandler
-"-----------------------------------------
+
 function! VimwikiLinkHandler(link)
   " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
   "   1) [[vfile:~/Code/PythonProject/abc123.py]]
@@ -629,11 +669,11 @@ function! VimwikiLinkHandler(link)
     return 1
   endif
 endfunction
-"-----------------------------------------
+
 "}}} end VimwikiLinkHandler
-"-----------------------------------------
+
 "{{{ Setting up the wikis
-"-----------------------------------------
+
 let $myrx_todo = '\C\<\%(CONCERN\|DONE\|INFO\|FIXED\|HOWTO\|NOTE\|QUESTION\|RESOURCE\|SUMMARY\|TODO\|UPDATE\|ZTEMP\|\)\>'
 
 let teaching = {}
@@ -712,11 +752,11 @@ let work_web.auto_export = 1
 
 let g:vimwiki_list = [ teaching, work, computer, music, music_web, work_web ]
 
-"-----------------------------------------
+
 "}}} end Setting up the wikis
-"-----------------------------------------
+
 "{{{ Tags customizations
-"-----------------------------------------
+
 
 " MyVimwikiGenerateTags; cleans up vimwiki tag link formatting
 function! MyVimwikiGenerateTags()
@@ -751,61 +791,8 @@ function! MyVimwikiGenerateTags()
 endfunction
 
 "}}}
-"-----------------------------------------
-"{{{ DIARY (obsolete: will stick with vimwiki's defaults)
-"-----------------------------------------
 
-"2025-08-14 I recently experimented with customized commands for diary
-"entries, that would automatically add %nohtml, jump to the end of the file, add a section. 
-"But vimwiki provides nice keymaps [count]<leader>... which allows to specify
-"which wiki you want to create/open a diary entry for, and I don't think it's
-"worth the effort to try to incorporate that level of sophistication into my
-"custom functions, so I will abandon (which may be for the best in other,
-"KISS-principle ways).
-
-"nnoremap <leader>w<leader>t :call MyTabMakeDiaryNote()<cr>
-
-"function! MyTabMakeDiaryNote()
-"execute 'VimwikiTabMakeDiaryNote'
-"execute 'tabmove $'
-"execute '$'
-"call append(line('$'),'%nohtml')
-"call append(line('$'),'= untagged =')
-"call append(line('$'),':[untagged]: %%+(use dt snippet here)+%%')
-"call append(line('$'),'')
-"call append(line('$'),'')
-"execute '$'
-"execute 'startinsert'
-"endfunction
-
-"nnoremap <leader>w<leader>w :call MyMakeDiaryNote()<cr>
-
-"function! MyMakeDiaryNote()
-"execute 'VimwikiMakeDiaryNote'
-"execute '$'
-"call append(line('$'),'%nohtml')
-"call append(line('$'),'= untagged =')
-"call append(line('$'),':[untagged]: %%+(use dt snippet here)+%%')
-"call append(line('$'),'')
-"call append(line('$'),'')
-"execute '$'
-"execute 'startinsert'
-"endfunction
-
-"function! MyUpdateTags()
-"execute 'vs diary.wiki'
-"execute 'write'
-"execute 'q'
-"execute 'vs TAGS.wiki'
-"execute 'write'
-"execute 'q'
-"endfunction
-
-"-----------------------------------------
-"}}} end DIARY (obsolete)
-"-----------------------------------------
 "{{{ DIARY archive
-"-----------------------------------------
 
 nnoremap <localleader>ut :call UnTag() <cr>
 function! UnTag()
@@ -845,14 +832,15 @@ function! ArchiveDiaryEntry(filename) range
   execute 'bd'
 endfunction
 
-"-----------------------------------------
 "}}} end DIARY
-"-----------------------------------------
+
 "{{{ AUGROUP
-"-----------------------------------------
+"
 augroup WIKI
   autocmd!
-  "Generate links in a wiki's diary file upon write (note that VimwikiDiaryIndex function has 'write' built into it, so this will be executed upon (number)<leader>wi):
+  "Generate links in a wiki's diary file upon write (note that
+  "VimwikiDiaryIndex function has 'write' built into it, so this will be
+  "executed upon (number)<leader>wi):
   autocmd BufWrite *diary.wiki  VimwikiDiaryGenerateLinks
   " Automatically call MyTags upon writing TAGS.wiki
   autocmd BufWrite *TAGS.wiki  call MyVimwikiGenerateTags()
@@ -864,15 +852,13 @@ augroup WIKI
   "The following will reload a buffer on BufEnter (useful for my AddTo... functions)
   autocmd BufEnter *docs.wiki e
 augroup end
-"-----------------------------------------
-"}}} end AUGROUP
-"-----------------------------------------
 
-"-----------------------------------------
+"}}} end AUGROUP
+
+
 "}}} end PLUGIN vimwiki
-"-----------------------------------------
+
 "{{{ MY CUSTOM HELP FILES 
-"-----------------------------------------
 
 augroup CUSTOMHELP
   autocmd!
@@ -895,11 +881,9 @@ function! OpenMyVimQuicknotes()
   execute 'set modifiable'
 endfunction
 
-"-----------------------------------------
 "}}} end MY CUSTOM HELP FILES
-"-----------------------------------------
+
 "{{{ OPENING MISC FILES (based on :h gf)
-"-----------------------------------------
 
 "OPEN FILE IN SAME DIRECTORY AS CURRENT BUFFER:
 nnoremap <leader><leader>e :e %:h
@@ -963,12 +947,10 @@ function! MyTodo()
   execute 'TabooRename todo'
 endfunction
 
-
-"-----------------------------------------
 "}}} end Opening misc files
-"-----------------------------------------
+
 "{{{ My "append to filename" function
-"-----------------------------------------
+
 "FUNCTION: Takes argument, appends it to end of filename.
 "(Renames file, deletes old one, appropriately sets filetype.)
 "USE: vimwiki diary entries that turn out to be important, and merit a descriptive name.
@@ -996,11 +978,9 @@ function! MyAppendToFilename(append) range
 
 endfunction
 
-"-----------------------------------------
 "}}} end My "append to filename" function
-"-----------------------------------------
+
 "{{{ My "Backup with timestamp" function
-"-----------------------------------------
 "Writes a backup file with timestamp appended to filename. 
 "For tex files, check if pdf file exists, and if so, copy that pdf file to a timestamped backup pdf as well.
 "Does not open the backed up file.
@@ -1039,11 +1019,9 @@ function! BackupWithTimestamp()
   endif
 endfunction
 
-"-----------------------------------------
 "}}} end My "Backup with timestamp" function
-"-----------------------------------------
+
 "{{{ COMPLETTION, DICTIONARY
-"-----------------------------------------
 
 set complete=.,w,b,u,t,k "2022-09-28. Removed i option which caused tab completion to scan included files (took ages with some latex files). 2024-10-05 added k option for dictionary (see above for dictionary details
 
@@ -1058,20 +1036,23 @@ function! AddToDictionary()
   call writefile([l:currentword], $HOME . "/.vim/doc/dictionary.txt", "a")
 endfunction
 
-"-----------------------------------------
 "}}} end COMPLETTION
-"-----------------------------------------
+
 "{{{ plugin: vim-cool
+
 let g:cool_total_matches = 1
+
 "}}} end 
-"-----------------------------------------
+
 "{{{ plugin: NERDTree
+
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>nc :NERDTreeCWD<CR>
+
 "}}} end NERDTree 
-"-----------------------------------------
+
 "{{{ functions: add quick notes
-"-----------------------------------------
+
 "2025-06-11 These functions allow me to write a line of text and append it to
 "a particular file of my choosing. Very useful for adding to todo lists, work
 "wiki, teaching wiki, computer wiki, without having to navigate away from my
@@ -1111,11 +1092,11 @@ function! Get_visual_selection()
 endfunction
 
 command! -range -nargs=0 AddToLatexMyTips call writefile(Get_visual_selection(), $HOME . "/Documents/3computer/mytips/latex.tex", "a")
-"-----------------------------------------
+
 "}}} 
-"-----------------------------------------
+
 "{{{ MyKeymaps Functions
-"-----------------------------------------
+
 nnoremap <leader>kk :Bufferize call MyKeymaps()<CR>
 
 "Hi there!
@@ -1253,6 +1234,4 @@ function! MyKeymaps()
   echo "}}}"
 endfunction
 
-"-----------------------------------------
 "}}} 
-"-----------------------------------------
