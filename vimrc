@@ -306,6 +306,7 @@ let g:fzf_action = {
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 
 nnoremap <leader>bb :Buffers<cr>
+nnoremap <leader>gf :GFiles<cr>
 
 "run Files:
 nnoremap <leader>fU :FilesTextOnly ../../<cr>
@@ -1068,12 +1069,7 @@ function! MyKeymaps()
   echo ",gP: Git push"
   echo "}}}"
   echo "{{{ OPEN/CLOSE/VIEW ETC "
-  echo ",,e: e %:h -- open file in same directory as current buffer"
-  echo ",,s: sp %:h -- split file in same directory as current buffer"
-  echo ",,v: vs %:h -- vsplit file in same directory as current buffer"
-  echo ",,t: $tabe %:h -- tab file in same directory as current buffer"
-  echo ",te: $tabedit"
-  echo ",gf: $tabe <cfile><cr> -- OPENING FILE UNDER CURSOR IN NEW TAB"
+  echo "gf: $tabe <cfile><cr> -- OPENING FILE UNDER CURSOR IN NEW TAB"
   echo ",go: Open <cfile><cr> -- OPEN FILE UNDER CURSOR"
   echo ",xd: Start! texdoc <cfile><cr> -- TEXDOC FILE UNDER CURSOR"
   echo ",xf: $tabe /Users/preynol1/Library/texmf/tex/local/<cfile>.cls<cr> -- OPEN cls FILE"
@@ -1113,6 +1109,7 @@ function! MyKeymaps()
   echo "}}}"
   echo "{{{ FZF, RG "
   echo ",bb: Buffers"
+  echo ",gf: GFiles"
   echo ",ff: FilesTextOnly -- run Files in cwd only on files specified in ign-except-text; exclude .gitignore files"
   echo ",fa: FilesAll -- run Files in cwd; include .gitignore files so I can open e.g. pdfs"
   echo ",fh: FilesAllHidden ~ -- run Files in cwd, include .gitignore AND hidden"
