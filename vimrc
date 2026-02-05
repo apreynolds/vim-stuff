@@ -130,11 +130,6 @@ augroup GENERAL
   autocmd BufNewFile,BufRead *.toml setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *ign-except-text setlocal filetype=gitignore
   autocmd BufNewFile,BufRead *dircolors setlocal foldmethod=marker
-
-  "The following will reload a buffer on BufEnter (useful for my AddTo...
-  "functions):
-  autocmd BufEnter *todo.txt e
-  autocmd BufEnter *todo.txt setlocal foldmethod=manual
 augroup end
 
 "}}} end AUGROUP
