@@ -496,9 +496,16 @@ endfunction
 "}}}
 "-----------------------------------------
 "{{{ plugin: yazi-vim
-"
-let g:yazi_replace_netrw = 1
+
+" Replace netrw with yazi
+let g:yazi_replace_netrw = 1  
+
+" Disable default key mappings
+let g:yazi_no_mappings = 1  
+
+" Set keymap to open yazi in new tab
 nnoremap <leader>y :tabnew \| Yazi<cr>
+
 "}}}
 "-----------------------------------------
 "{{{ Diff (and mappings)
