@@ -875,7 +875,7 @@ nnoremap <leader>md :set modifiable<cr>
 
 "USE MY HELP FILES:
 nnoremap <leader>hv :help myvim-
-nnoremap <leader>hl :$tabe ~/Documents/3computer/mytips/latex.tex<cr>
+nnoremap <leader>hl :$tabe ~/Documents/3tech/mytips/latex.tex<cr>
 
 "EDIT MY HELP FILES:
 nnoremap <F1> :call OpenMyVimQuicknotes()<CR>
