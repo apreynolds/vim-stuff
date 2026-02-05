@@ -254,7 +254,7 @@ nnoremap <leader>gk :Git checkout
 nnoremap <leader>gt :Git tag 
 nnoremap <leader>gm :Git merge  
 nnoremap <leader>gr :Git rebase  
-nnoremap <leader>gP :Git push
+nnoremap <leader>gP :Git push<cr>
 
 "}}}
 
