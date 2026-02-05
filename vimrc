@@ -254,6 +254,7 @@ nnoremap <leader>gk :Git checkout
 nnoremap <leader>gt :Git tag 
 nnoremap <leader>gm :Git merge  
 nnoremap <leader>gr :Git rebase  
+nnoremap <leader>gP :Git push
 
 "}}}
 
@@ -1080,6 +1081,7 @@ function! MyKeymaps()
   echo ",gt: Git tag"
   echo ",gm: Git merge"
   echo ",gr: Git rebase -- (generally I rebase BRANCH onto main)"
+  echo ",gP: Git push"
   echo "}}}"
   echo "{{{ OPEN/CLOSE/VIEW ETC "
   echo ",,e: e %:h -- open file in same directory as current buffer"
