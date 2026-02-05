@@ -865,7 +865,8 @@ augroup end
 
 augroup CUSTOMHELP
   autocmd!
-  autocmd BufNewFile,BufRead *.help.txt setlocal filetype=help foldmethod=marker modifiable noreadonly
+  autocmd BufNewFile,BufRead *.help.txt 
+        \setlocal filetype=help foldmethod=marker modifiable noreadonly
   autocmd BufWritePost ~/.vim/doc/* :helptags ~/.vim/doc
 augroup end
 
