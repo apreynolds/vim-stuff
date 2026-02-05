@@ -137,7 +137,7 @@ Plug 'edkolev/tmuxline.vim', {'on': []} "Unnecessary
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'artnez/vim-wipeout'
-Plug 'christoomey/vim-tmux-navigator', {'on': []} "Unnecessary
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'TaDaa/vimade', {'on': []} "2025-05-18 encountered error when sourcing vimrc, so have disabled (unimportant plugin)
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-eunuch'
