@@ -74,13 +74,10 @@ set scrolloff=2      " Keep 2 lines visible at top/bottom when scrolling
 set noshowmode       " Showmode is unnecessary when using airline
 set formatoptions+=j " Delete comment character when joining commented lines.
 
-set background=dark
 
 "MAXIMIZE WINDOW:
 nnoremap <C-W>m <C-W>\|<C-W>_ 
 
-"SET COLOR OF DIRECTORIES TO MATCH MY DIRCOLORS:
-hi! link Directory GruvboxBlue
 "}}}
 "-----------------------------------------
 "{{{ BASIC searching
@@ -162,6 +159,9 @@ call plug#end()
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 colorscheme gruvbox
+set background=dark "had to add this which I switched to kitty terminal
+"SET COLOR OF DIRECTORIES TO MATCH MY DIRCOLORS:
+hi! link Directory GruvboxBlue
 
 "highlight NonText ctermfg=bg
 "highlight VertSplit ctermfg=bg
