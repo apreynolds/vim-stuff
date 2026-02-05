@@ -324,25 +324,21 @@ nnoremap <leader>f0 :FilesAll ~//Documents/0desktopia<cr>
 nnoremap <leader>f1 :FilesAll ~/Documents/1math<cr>
 nnoremap <leader>f2 :FilesAll ~/OneDrive\ -\ University\ of\ New\ Brunswick/2work<cr>
 nnoremap <leader>f3 :FilesAll ~/Documents/3tech<cr>
+
+"run Files in 3tech/mytips
 nnoremap <leader><F1> :FilesAll ~/Documents/3tech/mytips/<cr>
 
 
 "run Rg in cwd (default)
 nnoremap <leader>rr :RgTextOnly <cr>
 nnoremap <leader>rg :Rg <cr>
-nnoremap <leader>rh :RgTextOnlyIncludeHidden <cr>
 "run Rg in wiki diaries (default)
-nnoremap <leader>rd :RgDiary <cr>
-nnoremap <leader>1rd :RgTeachingDiary <cr>
-nnoremap <leader>2rd :RgWorkDiary <cr>
-nnoremap <leader>3rd :RgComputerDiary <cr>
+nnoremap <leader>rt :RgTechDiary <cr>
 
 "run Rg in cwd only on specific text files (and follow symlinks):
 command! -bang -nargs=* RgTextOnly call fzf#vim#grep("rg --follow --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
-"run Rg in cwd, only on specific text files, include zz-* directories
-command! -bang -nargs=* RgTextOnlyIncludeHidden call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --hidden --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
-"run Rg in diary of wikis, only on specific text files:
-command! -bang -nargs=* RgDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': 'diary'}), <bang>0)
+"run Rg in diary, only on specific text files:
+command! -bang -nargs=* RgTechDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/3tech/diary'}), <bang>0)
 
 "}}}
 
@@ -1095,9 +1091,7 @@ function! MyKeymaps()
   echo ",f[count]: FilesAll -- run FilesAll in 0desktopia, 1math, etc "
   echo ",rr: RgTextOnly -- run Rg in cwd only on textfiles, follow symlinks"
   echo ",rg: Rg -- run Rg in cwd (default)"
-  echo ",rh :RgTextOnlyIncludeHidden -- run Rg in cwd, only on specific text files, include hidden files/dirs"
-  echo ",rd: RgDiary -- run Rg in /diary of current directory"
-  echo ",[count]rd: RgDiary -- run Rg in /diary of current directory"
+  echo ",rt: RgTechDiary -- run Rg in 3tech/diary"
   echo "}}}"
   echo "{{{ VIMWIKI "
   echo ",vc: VimwikiTOC"
