@@ -65,6 +65,7 @@ set number relativenumber " Lines numbered relative to cursor
 set tabstop=4             " 4 spaces (default is 8)
 set expandtab             " Replace tabstops with spaces
 set shiftwidth=2          " Sets indentation to 2 spaces (default is 8)
+set tw=80 " text width set to 80 characters
 set linebreak breakindent " Breaks lines at whitespace, and indent
 set showbreak=..          " Indentation of a linebreak is indicate with ..
 set ruler                 " Shows the current line number at the bottom-right of the screen.
