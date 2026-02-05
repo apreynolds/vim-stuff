@@ -213,20 +213,32 @@ let g:dispatch_no_maps = 1
 
 "{{{ plugin: todo.txt, Foldsearch, todo.txt
 
-" DISABLE MAPPINGS: (I only use one)
+" DISABLE MAPPINGS: (I only use one, Fw)
 let g:foldsearch_disable_mappings = 1
 
-"ENABLE FW:
+"ENABLE FW: (folds lines not containing word under cursor)
 nnoremap <leader>fw :Fw<cr>
 
 augroup TODO
   autocmd!
   autocmd BufEnter *todo.txt setlocal foldmethod=manual
-  autocmd FileType todo nnoremap <leader><leader>1 :Fp @\(household\)\@!<cr>
-  autocmd FileType todo nnoremap <leader><leader>p :Fp (\w)<cr>
+
+  " Display tasks that do not contain WORD (fold others)
+  autocmd FileType todo nnoremap <leader><leader>1 :Fp @\(WORD\)\@!<cr>
+
+  " I do not know why I created the following:
+  "autocmd FileType todo nnoremap <leader><leader>p :Fp (\w)<cr>
+
+  " Display tasks with due date, but without threshold date (fold others)
   autocmd FileType todo nnoremap <leader><leader>d :Fp due:\d\d\d\d-\d\d-\d\d\( t:\d\d\d\d-\d\d-\d\d\)\@!<cr>
+
+  " Display priority A tasks (fold others)
   autocmd FileType todo noremap <leader><leader>a :Fp (A)<cr>
+
+  " Display priority A or B tasks (fold others)
   autocmd FileType todo noremap <leader><leader>b :Fp (A)\\|(B)<cr>
+
+  " Display priority A or B or C tasks (fold others)
   autocmd FileType todo noremap <leader><leader>c :Fp (A)\\|(B)\\|(C)<cr>
 augroup end
 
