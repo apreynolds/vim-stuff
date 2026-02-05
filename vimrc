@@ -1013,7 +1013,10 @@ endfunction
 
 "{{{ COMPLETTION, DICTIONARY
 
-set complete=.,w,b,u,t,k "2022-09-28. Removed i option which caused tab completion to scan included files (took ages with some latex files). 2024-10-05 added k option for dictionary (see above for dictionary details
+" Note that i option will cause tab completion to scan included files (took ages
+" with some latex files). 
+" k option will include dictionary
+set complete=.,w,b,u,t,k 
 
 set dictionary+=~/.vim/doc/dictionary.txt " added 2024-10-05
 
