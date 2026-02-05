@@ -309,9 +309,19 @@ nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>gf :GFiles<cr>
 
 "run Files, DO ignore .gitignore files, AND run only on specific text files
-command! -bang -nargs=? -complete=dir FilesTextOnly call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --follow --ignore-file ~/.config/fd/ign-except-text'}), <bang>0)
+command! -bang -nargs=? -complete=dir FilesTextOnly 
+      \call fzf#vim#files(
+      \<q-args>, fzf#vim#with_preview(
+      \{'source': 'fd --follow --ignore-file ~/.config/fd/ign-except-text'}
+      \), 
+      \<bang>0)
 "run Files, DON'T ignore .gitignore files, so I can open e.g. pdfs
-command! -bang -nargs=? -complete=dir FilesAll call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --no-ignore-vcs --follow'}), <bang>0)
+command! -bang -nargs=? -complete=dir FilesAll 
+      \call fzf#vim#files(
+      \<q-args>, fzf#vim#with_preview(
+      \{'source': 'fd --no-ignore-vcs --follow'}
+      \), 
+      \<bang>0)
 
 "run Files:
 nnoremap <leader>ff :FilesTextOnly<cr>
@@ -336,9 +346,22 @@ nnoremap <leader>rg :Rg <cr>
 nnoremap <leader>rt :RgTechDiary <cr>
 
 "run Rg in cwd only on specific text files (and follow symlinks):
-command! -bang -nargs=* RgTextOnly call fzf#vim#grep("rg --follow --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* RgTextOnly 
+      \call fzf#vim#grep(
+      \"rg --follow --column --line-number --no-heading \--color=always 
+      \--smart-case --ignore-file ~/.config/fd/ign-except-text 
+      \-- ".fzf#shellescape(<q-args>), 
+      \fzf#vim#with_preview(), 
+      \<bang>0)
+
 "run Rg in diary, only on specific text files:
-command! -bang -nargs=* RgTechDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/3tech/diary'}), <bang>0)
+command! -bang -nargs=* RgTechDiary 
+      \call fzf#vim#grep(
+      \"rg --column --line-number --no-heading --color=always 
+      \--smart-case --ignore-file ~/.config/fd/ign-except-text 
+      \-- ".fzf#shellescape(<q-args>), 
+      \fzf#vim#with_preview({'dir': '~/Documents/3tech/diary'}), 
+      \<bang>0)
 
 "}}}
 
