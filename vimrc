@@ -211,7 +211,7 @@ let g:dispatch_no_maps = 1
 
 "}}}
 
-"{{{ plugin: todo.txt, Foldsearch, todo.txt
+"{{{ plugin: todo.txt, Foldsearch
 
 " DISABLE MAPPINGS: (I only use one, Fw)
 let g:foldsearch_disable_mappings = 1
@@ -1123,9 +1123,6 @@ function! MyKeymaps()
   echo "<F1>: call OpenMyVimQuicknotes()"
   echo "}}}"
   echo "{{{ MY ADD-TO-OTHER-FILES "
-  echo ",atw: AddToTodoWork"
-  echo ",atc: AddToTodoComputer"
-  echo ",atd: AddToTodo"
   echo "(no keymap): AddToLatexMyTips -- appends visual selection to latex.tex"
   echo "}}}"
   echo "{{{ FZF, RG "
