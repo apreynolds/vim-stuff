@@ -314,25 +314,16 @@ command! -bang -nargs=? -complete=dir FilesTextOnly call fzf#vim#files(<q-args>,
 command! -bang -nargs=? -complete=dir FilesAll call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --no-ignore-vcs --follow'}), <bang>0)
 
 "run Files:
-nnoremap <leader>fU :FilesTextOnly ../../<cr>
-nnoremap <leader>faU :FilesAll ../../<cr>
-nnoremap <leader>fu :FilesTextOnly ../<cr>
-nnoremap <leader>fau :FilesAll ../<cr>
 nnoremap <leader>ff :FilesTextOnly<cr>
 nnoremap <leader>fa :FilesAll<cr>
-nnoremap <leader>f0 :FilesTextOnly ~/Desktop<cr>
-nnoremap <leader>fa0 :FilesAll ~/Desktop<cr>
-nnoremap <leader>f1 :FilesTextOnly ~/Documents/1math<cr>
-nnoremap <leader>fa1 :FilesAll ~/Documents/1math<cr>
-nnoremap <leader>f2 :FilesTextOnly ~/Documents/2work<cr>
-nnoremap <leader>fa2 :FilesAll ~/Documents/2work<cr>
-nnoremap <leader>f3 :FilesTextOnly ~/Documents/3tech<cr>
-nnoremap <leader>fa3 :FilesAll ~/Documents/3tech<cr>
-nnoremap <leader>fd :FilesTextOnly ~/Documents/<cr>
-nnoremap <leader>fad :FilesAll ~/Documents/<cr>
-nnoremap <leader>fH :FilesTextOnly ~<cr>
-nnoremap <leader>faH :FilesAll ~<cr>
-
+nnoremap <leader>fu :FilesTextOnly ../<cr>
+nnoremap <leader>fau :FilesAll ../<cr>
+nnoremap <leader>fU :FilesTextOnly ../../<cr>
+nnoremap <leader>faU :FilesAll ../../<cr>
+nnoremap <leader>f0 :FilesAll ~//Documents/0desktopia<cr>
+nnoremap <leader>f1 :FilesAll ~/Documents/1math<cr>
+nnoremap <leader>f2 :FilesAll ~/OneDrive\ -\ University\ of\ New\ Brunswick/2work<cr>
+nnoremap <leader>f3 :FilesAll ~/Documents/3tech<cr>
 nnoremap <leader><F1> :FilesAll ~/Documents/3tech/mytips/<cr>
 
 
@@ -352,9 +343,6 @@ command! -bang -nargs=* RgTextOnly call fzf#vim#grep("rg --follow --column --lin
 command! -bang -nargs=* RgTextOnlyIncludeHidden call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --hidden --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
 "run Rg in diary of wikis, only on specific text files:
 command! -bang -nargs=* RgDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': 'diary'}), <bang>0)
-command! -bang -nargs=* RgTeachingDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/1teaching/diary'}), <bang>0)
-command! -bang -nargs=* RgWorkDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/2work/diary'}), <bang>0)
-command! -bang -nargs=* RgComputerDiary call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/fd/ign-except-text -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'dir': '~/Documents/3computer/diary'}), <bang>0)
 
 "}}}
 
@@ -1100,15 +1088,11 @@ function! MyKeymaps()
   echo ",gf: GFiles"
   echo ",ff: FilesTextOnly -- run Files in cwd only on files specified in ign-except-text; exclude .gitignore files"
   echo ",fa: FilesAll -- run Files in cwd; include .gitignore files so I can open e.g. pdfs"
-  echo ",fh: FilesAllHidden ~ -- run Files in cwd, include .gitignore AND hidden"
-  echo ",[count]ff: FilesTextOnly -- run Files in cwd only... in specified wiki"
-  echo "(similarly, [count]fa, [count]fh)"
-  echo ",dff: FilesTextOnly -- run Files in cwd only... in Documents"
-  echo "(similarly ,dfa ,dfh)"
-  echo ",hff: FilesTextOnly -- run Files in cwd only... in HOME"
-  echo "(similarly ,hfa ,hfh)"
-  echo ",cff: FilesTextOnly -- run Files in cwd only... in dir of CURRENT BUFFER"
-  echo "(similarly ,cfa ,cfh)"
+  echo ",fu: FilesTextOnly up-one-level"
+  echo ",fau: FilesAll up-one-level"
+  echo ",fU: FilesTextOnly up-two-levels"
+  echo ",faU: FilesAll up-two-levels"
+  echo ",f[count]: FilesAll -- run FilesAll in 0desktopia, 1math, etc "
   echo ",rr: RgTextOnly -- run Rg in cwd only on textfiles, follow symlinks"
   echo ",rg: Rg -- run Rg in cwd (default)"
   echo ",rh :RgTextOnlyIncludeHidden -- run Rg in cwd, only on specific text files, include hidden files/dirs"
