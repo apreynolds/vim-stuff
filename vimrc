@@ -80,6 +80,8 @@ set background=dark
 "MAXIMIZE WINDOW:
 nnoremap <C-W>m <C-W>\|<C-W>_ 
 
+"SET COLOR OF DIRECTORIES TO MATCH MY DIRCOLORS:
+hi! link Directory GruvboxBlue
 "}}}
 "-----------------------------------------
 "{{{ BASIC searching
