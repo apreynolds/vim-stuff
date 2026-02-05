@@ -892,47 +892,31 @@ endfunction
 
 "{{{ OPENING MISC FILES (based on :h gf)
 
-" I believe that I set up some of what follows when I was committed to the 'no
-" autochdir' approach. I've gone through a few iterations of how to organize
-" files, and I've landed back at autochdir. So I'm going to delete some of the
-" below.
-
-"OPEN FILE IN SAME DIRECTORY AS CURRENT BUFFER:
-nnoremap <leader><leader>e :e %:h
-nnoremap <leader><leader>s :sp %:h
-nnoremap <leader><leader>v :vs %:h
-nnoremap <leader><leader>t :$tabe %:h
-
-"OPEN NEW TAB: (takes filename argument)
-nnoremap <leader>te :$tabedit 
-
-"TEXDOC FILE UNDER CURSOR: 
+" To open the manual for a particular latex package, simply put cursor under the
+" package name and enter this keymap:
 noremap <leader>xd :Start! texdoc <cfile><cr>
 
-"OPENING TEXMF LOCAL FILE UNDER CURSOR IN NEW TAB:
+" If I'm using a personal latex class or style file, store in texmf/tex/local,
+" and wish to open in, simply put cursor under the file name and enter:
 noremap <leader>xf :$tabe /Users/preynol1/Library/texmf/tex/local/<cfile>.cls<cr>
 
-"OPENING FILE UNDER CURSOR IN NEW TAB:
-noremap <leader>gf :$tabe <cfile><cr>
-map gf :$tabe %:h/<cfile><CR>
-noremap <leader>go :Open <cfile><cr>
+" Opens vimrc in new tab
+nnoremap <leader>ev :$tabe $HOME/Documents/3tech/vim/vimrc<cr>
+" Sources vimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
-"CHANGES LOCAL DIR TO THAT OF CURRENT BUFFER:
-nnoremap <leader>cd :lcd %:p:h <cr> 
-nnoremap <leader>c1 :lcd ~/Documents/1teaching <cr> 
-nnoremap <leader>c2 :lcd ~/Documents/2work <cr> 
-nnoremap <leader>c3 :lcd ~/Documents/3computer <cr> 
+" Opens yazi keymap in new tab
+nnoremap <leader>ey :$tabe $HOME/Documents/3tech/yazi/keymap.toml<cr> 
+
+" Open file under cursor in new tab
+map gf :$tabe <cfile><CR>
+
+" Open file under cursor in application
+nnoremap <leader>go :Open <cfile><cr>
 
 " COPY FILENAME WITH PATH TO UNNAMED REGISTER:
 nnoremap <leader>cp :let @" = expand("%:p")<CR>
 nnoremap <leader>cP :let @+ = expand("%:p")<CR>
-
-"VIMRC:
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :$tabe $HOME/Documents/3tech/vim/vimrc<cr>
-
-"YAZI:
-nnoremap <leader>ey :$tabe $HOME/Documents/3tech/yazi/keymap.toml<cr> 
 
 "}}} end Opening misc files
 
