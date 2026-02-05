@@ -312,39 +312,26 @@ nnoremap <leader>gf :GFiles<cr>
 command! -bang -nargs=? -complete=dir FilesTextOnly call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --follow --ignore-file ~/.config/fd/ign-except-text'}), <bang>0)
 "run Files, DON'T ignore .gitignore files, so I can open e.g. pdfs
 command! -bang -nargs=? -complete=dir FilesAll call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --no-ignore-vcs --follow'}), <bang>0)
-"run Files, DON'T ignore .gitignore files AND include hidden files/directories (for searching archives)
-command! -bang -nargs=? -complete=dir FilesAllHidden call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'fd --no-ignore-vcs --hidden --follow'}), <bang>0)
 
 "run Files:
 nnoremap <leader>fU :FilesTextOnly ../../<cr>
 nnoremap <leader>faU :FilesAll ../../<cr>
-nnoremap <leader>fhU :FilesAllHidden ../../<cr>
 nnoremap <leader>fu :FilesTextOnly ../<cr>
 nnoremap <leader>fau :FilesAll ../<cr>
-nnoremap <leader>fhu :FilesAllHidden ../<cr>
 nnoremap <leader>ff :FilesTextOnly<cr>
 nnoremap <leader>fa :FilesAll<cr>
-nnoremap <leader>fh :FilesAllHidden<cr>
 nnoremap <leader>f0 :FilesTextOnly ~/Desktop<cr>
 nnoremap <leader>fa0 :FilesAll ~/Desktop<cr>
 nnoremap <leader>f1 :FilesTextOnly ~/Documents/1math<cr>
 nnoremap <leader>fa1 :FilesAll ~/Documents/1math<cr>
-nnoremap <leader>fh1 :FilesAllHidden ~/Documents/1math<cr>
 nnoremap <leader>f2 :FilesTextOnly ~/Documents/2work<cr>
 nnoremap <leader>fa2 :FilesAll ~/Documents/2work<cr>
-nnoremap <leader>fh2 :FilesAllHidden ~/Documents/2work<cr>
 nnoremap <leader>f3 :FilesTextOnly ~/Documents/3tech<cr>
 nnoremap <leader>fa3 :FilesAll ~/Documents/3tech<cr>
-nnoremap <leader>fh3 :FilesAllHidden ~/Documents/3tech<cr>
 nnoremap <leader>fd :FilesTextOnly ~/Documents/<cr>
 nnoremap <leader>fad :FilesAll ~/Documents/<cr>
-nnoremap <leader>fhd :FilesAllHidden ~/Documents/<cr>
 nnoremap <leader>fH :FilesTextOnly ~<cr>
 nnoremap <leader>faH :FilesAll ~<cr>
-nnoremap <leader>fhH :FilesAllHidden ~<cr>
-nnoremap <leader>fc :FilesTextOnly %:p:h<cr>
-nnoremap <leader>fac :FilesAll %:p:h<cr>
-nnoremap <leader>fhc :FilesAllHidden %:p:h<cr>
 
 nnoremap <leader><F1> :FilesAll ~/Documents/3tech/mytips/<cr>
 
