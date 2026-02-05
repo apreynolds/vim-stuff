@@ -95,8 +95,6 @@ set hlsearch   " for vim-cool
 let mapleader = ","
 " local leader is used for e.g. filetype plugins:
 let maplocalleader = "," "same
-" older experiment:
-"let maplocalleader = "\<Space>"
 "}}}
 "-----------------------------------------
 "{{{ AUGROUP
@@ -126,7 +124,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'junegunn/vim-easy-align'
-"Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-obsession' 
 Plug 'tpope/vim-dispatch' "keymaps disabled
@@ -136,11 +133,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'embear/vim-foldsearch'
 Plug 'gcmt/taboo.vim'
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim', {'on': []} "Unnecessary
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'artnez/vim-wipeout'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator', {'on': []} "Unnecessary
 Plug 'TaDaa/vimade', {'on': []} "2025-05-18 encountered error when sourcing vimrc, so have disabled (unimportant plugin)
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-eunuch'
@@ -155,8 +152,7 @@ Plug 'nanotee/zoxide.vim'
 Plug 'preservim/vim-markdown'
 Plug 'AndrewRadev/bufferize.vim'
 Plug 'kshenoy/vim-signature' "for marks
-"Plug 'dominickng/fzf-session.vim', {'on': []}
-Plug 'Tarmean/fzf-session.vim'
+Plug 'Tarmean/fzf-session.vim' "replaces dominickng/fzf-session.vim
 Plug 'yukimura1227/vim-yazi'
 call plug#end()
 "}}}
