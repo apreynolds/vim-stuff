@@ -631,25 +631,6 @@ inoremap <leader><leader>p <Plug>VimwikiTableNextCell
 
 "}}} end GENERAL
 
-"{{{ My InitializeWikis function (obsolete?)
-
-nnoremap <localleader>iw :call InitializeWikis()<CR>
-
-function! InitializeWikis()
-  execute 'e ~/apr-docs/docs.wiki'
-  execute 'lcd %:p:h'
-  execute 'sp +3 ~/apr-docs/TAGS.wiki'
-  execute 'foldopen'
-  execute 'vs +2 ~/apr-docs/diary/diary.wiki'
-  execute 'foldopen!'
-  execute 'wincmd L'
-  execute 'wincmd h'
-  execute 'TabooRename docs'
-  execute 'tabfirst'
-endfunction
-
-"}}} end InitializeWikis
-
 "{{{ VimwikiLinkHandler
 
 function! VimwikiLinkHandler(link)
