@@ -713,7 +713,6 @@ let g:vimwiki_list = [ math, site_work, tech, site_music ]
 
 "{{{ Tags customizations
 
-
 " MyVimwikiGenerateTags; cleans up vimwiki tag link formatting
 function! MyVimwikiGenerateTags()
   "clear .vimwiki_tags beforehand
@@ -800,13 +799,10 @@ augroup WIKI
   autocmd BufWrite *diary.wiki  VimwikiDiaryGenerateLinks
   " Automatically call MyTags upon writing TAGS.wiki
   autocmd BufWrite *TAGS.wiki  call MyVimwikiGenerateTags()
-  autocmd BufWrite teaching-index.wiki  call MyVimwikiGenerateTags()
-  autocmd BufWrite work-index.wiki  call MyVimwikiGenerateTags()
-  autocmd BufWrite computer-index.wiki  call MyVimwikiGenerateTags()
+  autocmd BufWrite math-index.wiki  call MyVimwikiGenerateTags()
+  autocmd BufWrite tech-index.wiki  call MyVimwikiGenerateTags()
   "HTML FILETYPE: for thtml (template) files
   autocmd BufNewFile,BufRead *.thtml setlocal filetype=html
-  "The following will reload a buffer on BufEnter (useful for my AddTo... functions)
-  autocmd BufEnter *docs.wiki e
 augroup end
 
 "}}} end AUGROUP
