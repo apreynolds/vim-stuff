@@ -604,13 +604,18 @@ let g:vimwiki_key_mappings =
       \ {
       \   'table_mappings': 0,
       \ }
+
+"removed .md from list, so that vimwiki wouldn't auto-generate html
+"for .md files (2025-05-23)
 let g:vimwiki_ext2syntax = {'.mkdn': 'markdown',
       \  '.mdwn': 'markdown', '.mdown': 'markdown',
-      \  '.markdown': 'markdown', '.mw': 'media'} "2025-05-23 removed .md from list, so that vimwiki wouldn't auto-generate html for .md files
+      \  '.markdown': 'markdown', '.mw': 'media'}
 
 nnoremap <localleader>vc :VimwikiTOC<CR>
 
+" I like newly opened tabs to be last
 nnoremap <localleader>vt :call MyVimwikiTabnewLink()<cr>
+
 function! MyVimwikiTabnewLink()
   execute 'VimwikiTabnewLink'
   execute 'tabmove $'
@@ -644,7 +649,6 @@ function! VimwikiLinkHandler(link)
     echomsg 'Vimwiki Error: Unable to resolve link!'
     return 0
   else
-    "exe 'vsplit ' . fnameescape(link_infos.filename)
     exe '$tabnew ' . fnameescape(link_infos.filename)
     return 1
   endif
