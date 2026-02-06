@@ -618,10 +618,6 @@ endfunction
 
 nnoremap <localleader>vv :VimwikiVSplitLink<CR>
 
-"OBSOLETE:
-"nnoremap <localleader>vg :VimwikiGenerateTagLinks<CR>
-"nnoremap <localleader>vs :VimwikiSearchTags
-
 nnoremap <localleader>vk :VimwikiDiaryNextDay<CR>
 nnoremap <localleader>vj :VimwikiDiaryPrevDay<CR>
 
