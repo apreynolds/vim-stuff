@@ -679,81 +679,53 @@ endfunction
 
 let $myrx_todo = '\C\<\%(CONCERN\|DONE\|INFO\|FIXED\|HOWTO\|NOTE\|QUESTION\|RESOURCE\|SUMMARY\|TODO\|UPDATE\|ZTEMP\|\)\>'
 
-let teaching = {}
-let teaching.path = '~/Documents/1teaching/'
-let teaching.path_html = '~/Documents/1teaching/'
-let teaching.diary_rel_path = 'diary/'
-let teaching.index = 'teaching-index'
-let teaching.css_name = '.wikiconfig/style_www/style.css'
-let teaching.template_path = '~/Documents/1teaching/.wikiconfig/'
-let teaching.rx_todo = $myrx_todo
-let teaching.template_default = 'def_template'
-let teaching.template_ext = '.thtml'
-let teaching.auto_tags = 1
-let teaching.auto_export = 0
-let teaching.auto_diary_index = 1
+let math = {}
+let math.path = '~/Documents/1math/'
+let math.path_html = '~/Documents/1math/'
+let math.diary_rel_path = 'diary/'
+let math.index = 'teaching-index'
+let math.css_name = '.wikiconfig/style_www/style.css'
+let math.template_path = '~/Documents/1math/.wikiconfig/'
+let math.rx_todo = $myrx_todo
+let math.template_default = 'def_template'
+let math.template_ext = '.thtml'
+let math.auto_tags = 1
+let math.auto_export = 0
+let math.auto_diary_index = 1
 
-let work = {}
-let work.path = '~/Documents/2work/'
-let work.path_html = '~/Documents/2work/'
-let work.diary_rel_path = 'diary/'
-let work.index = 'work-index'
-let work.css_name = '.wikiconfig/style_www/style.css'
-let work.template_path = '~/Documents/2work/.wikiconfig/'
-let work.rx_todo = $myrx_todo
-let work.template_default = 'def_template'
-let work.template_ext = '.thtml'
-let work.auto_tags = 1
-let work.auto_export = 0
-let work.auto_diary_index = 1
+let site_work = {}
+let site_work.path = '~/Documents/2site-work/'
+let site_work.path_html = '~/Documents/2site-work/'
+let site_work.css_name = 'style_www/style.css'
+let site_work.template_path = '~/Documents/2site-work/wikiconfig/'
+let site_work.template_default = 'def_template'
+let site_work.template_ext = '.thtml'
+let site_work.auto_export = 1
 
-let computer = {}
-let computer.path = '~/Documents/3computer/'
-let computer.path_html = '~/Documents/3computer/'
-let computer.diary_rel_path = 'diary/'
-let computer.index = 'computer-index'
-let computer.css_name = '.wikiconfig/style_www/style.css'
-let computer.template_path = '~/Documents/3computer/.wikiconfig/'
-let computer.rx_todo = $myrx_todo
-let computer.template_default = 'def_template'
-let computer.template_ext = '.thtml'
-let computer.auto_tags = 1
-let computer.auto_export = 0
-let computer.auto_diary_index = 1
+let tech = {}
+let tech.path = '~/Documents/3tech/'
+let tech.path_html = '~/Documents/3tech/'
+let tech.diary_rel_path = 'diary/'
+let tech.index = 'computer-index'
+let tech.css_name = '.wikiconfig/style_www/style.css'
+let tech.template_path = '~/Documents/3tech/.wikiconfig/'
+let tech.rx_todo = $myrx_todo
+let tech.template_default = 'def_template'
+let tech.template_ext = '.thtml'
+let tech.auto_tags = 1
+let tech.auto_export = 0
+let tech.auto_diary_index = 1
 
-let music = {}
-let music.path = '~/Documents/4music/'
-let music.path_html = '~/Documents/4music/'
-let music.diary_rel_path = 'diary/'
-let music.index = 'music-index'
-let music.css_name = '.wikiconfig/style_www/style.css'
-let music.template_path = '~/Documents/4music/.wikiconfig/'
-let music.template_default = 'def_template'
-let music.rx_todo = $myrx_todo
-let music.template_ext = '.thtml'
-let music.auto_tags = 1
-let music.auto_export = 0
-let music.auto_diary_index = 1
+let site_music= {}
+let site_music.path = '~/Documents/4site-music/'
+let site_music.path_html = '~/Documents/4site-music/'
+let site_music.css_name = 'style_www/style.css'
+let site_music.template_path = '~/Documents/4site-music/wikiconfig/'
+let site_music.template_default = 'def_template'
+let site_music.template_ext = '.thtml'
+let site_music.auto_export = 1
 
-let music_web= {}
-let music_web.path = '~/Documents/5music-website/'
-let music_web.path_html = '~/Documents/5music-website/'
-let music_web.css_name = 'style_www/style.css'
-let music_web.template_path = '~/Documents/5music-website/wikiconfig/'
-let music_web.template_default = 'def_template'
-let music_web.template_ext = '.thtml'
-let music_web.auto_export = 1
-
-let work_web = {}
-let work_web.path = '~/Documents/6work-website/'
-let work_web.path_html = '~/Documents/6work-website/'
-let work_web.css_name = 'style_www/style.css'
-let work_web.template_path = '~/Documents/6work-website/wikiconfig/'
-let work_web.template_default = 'def_template'
-let work_web.template_ext = '.thtml'
-let work_web.auto_export = 1
-
-let g:vimwiki_list = [ teaching, work, computer, music, music_web, work_web ]
+let g:vimwiki_list = [ math, site_work, tech, site_music ]
 
 
 "}}} end Setting up the wikis
