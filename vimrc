@@ -675,10 +675,10 @@ let math.auto_export = 0
 let math.auto_diary_index = 1
 
 let site_work = {}
-let site_work.path = '~/Documents/2site-work/'
-let site_work.path_html = '~/Documents/2site-work/'
+let site_work.path = '/Documents/websites/2work-web/'
+let site_work.path_html = '/Documents/websites/2work-web/'
 let site_work.css_name = 'style_www/style.css'
-let site_work.template_path = '~/Documents/2site-work/wikiconfig/'
+let site_work.template_path = '~/Documents/websites/2work-web/wikiconfig/'
 let site_work.template_default = 'def_template'
 let site_work.template_ext = '.thtml'
 let site_work.auto_export = 1
@@ -698,10 +698,10 @@ let tech.auto_export = 0
 let tech.auto_diary_index = 1
 
 let site_music= {}
-let site_music.path = '~/Documents/4site-music/'
-let site_music.path_html = '~/Documents/4site-music/'
+let site_music.path = '~/Documents/websites/4music-web/'
+let site_music.path_html = '~/Documents/websites/4music-web/'
 let site_music.css_name = 'style_www/style.css'
-let site_music.template_path = '~/Documents/4site-music/wikiconfig/'
+let site_music.template_path = '~/Documents/websites/4music-web/wikiconfig/'
 let site_music.template_default = 'def_template'
 let site_music.template_ext = '.thtml'
 let site_music.auto_export = 1
