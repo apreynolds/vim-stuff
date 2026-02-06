@@ -527,6 +527,9 @@ map <leader>sl :SessionLoad<cr>
 map <leader>ss :call SessUnloadWipeoutLoad()<cr>
 map <leader>su :call SessUnloadWipeout()<cr>
 
+map <leader>s1 :source ~/.vim/sessions/mathwiki.vim<cr>
+map <leader>s3 :source ~/.vim/sessions/techwiki.vim<cr>
+
 "Custom function to unload, wipeout:
 function! SessUnloadWipeout()
   "Unload the current session:
