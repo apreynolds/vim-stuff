@@ -205,6 +205,15 @@ hi! link Directory GruvboxBlue
 
 "}}}
 
+" {{{ plugin: NERDCommenter
+
+let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = {
+      \ 'kitty': { 'left': '#' },
+      \ }
+
+" }}}
+
 "{{{ plugin: Dispatch
 
 let g:dispatch_no_maps = 1
