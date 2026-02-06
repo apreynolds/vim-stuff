@@ -126,6 +126,7 @@ augroup GENERAL
   autocmd BufNewFile,BufRead *.song setlocal filetype=song.tex
 
   autocmd BufEnter,BufRead tex.snippets setlocal foldmethod=marker foldmarker=<<<,>>> 
+  autocmd BufEnter,BufRead kitty.conf setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *rc setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *.toml setlocal foldmethod=marker
   autocmd BufNewFile,BufRead *ign-except-text setlocal filetype=gitignore
